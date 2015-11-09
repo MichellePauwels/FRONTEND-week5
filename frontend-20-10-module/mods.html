@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script>
+        // addModule.js
+        var addModule = (function() {
+            "use strict";
+            return {
+                exe: function() {
+                    // Geen 'vaste' params, JS ondersteund toch geen overloading...
+                    if(arguments.length > 1) {
+                        var result = 0;
+                        for(var i = arguments.length -1; i >=; i--) {   // performantie verhogen door for te reversen
+                            var param = arguments[i];
+                            if(typeof(param) === "Number") {
+                                result += arguments[i];
+                            }
+                        }
+                        return result;
+                    }
+                    return arguments.length === 1 ? arguments[0] : 0;
+                }
+            }
+        })();
+
+        // divideModule.js
+        var divideModule = (function() {
+            "use strict";
+            return {
+                exe: function() {
+                    return 2;
+                }
+            }
+        })();
+
+        // Calculator.js
+        // Object Literal
+        var Calculator = (function(addModule, divideModule) {  // self invoking
+            // Private
+            var power = function(){};
+
+            // Public
+            return {
+                add: addModule.exe,
+                divide: divideModule.exe()
+            };
+        })(addModule, divideModule);
+
+
+        /*
+        function Calc() {
+            // Private
+            var power = function(){}
+
+            // Public
+            return 12;
+        }*/
+
+//        Dit is wat ik wil:
+//        Calculate.power(); --> mag niet public zijn
+//        Calculator.add(1, 2);
+//        Calculator.devide(4, 2);
+    </script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+//xmlhttprequest
+
+var parkingService =
+{
+
+}

@@ -1,0 +1,5 @@
+var ParkingOverviewViewModel =
+{
+  parkingSpots: "",
+  showParkingSpots = ""
+}
